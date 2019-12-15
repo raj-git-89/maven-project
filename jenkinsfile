@@ -10,15 +10,6 @@ stage('choice 1'){
 	}
 }
 
-stage('choice 1'){
-	when{
-	expression { choice == '1' }
-	}
-	steps{
-	echo 'This is choice 1'
-	}
-}
-
 stage('choice 2'){
 	when{
 	expression { choice == '2' }
@@ -34,6 +25,15 @@ stage('choice 3'){
 	}
 	steps{
 	echo 'This is choice 3'
+	}
+}
+
+stage('choice 4'){
+	when{
+	expression { choice == '4' }
+	}
+	steps{
+	echo 'This is choice 4'
 	}
 }
 
