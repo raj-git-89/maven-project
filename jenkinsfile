@@ -1,62 +1,41 @@
-pipeline
-{
+pipeline{
 agent any
-stages
-{
-stage('git SCM')
-{
-steps
-{
-git 'https://github.com/raj-git-89/maven-project.git'
+stages{
+stage('choice 1'){
+	when{
+	expression { choice == '1' }
+	}
+	steps{
+	echo 'This is choice 1'
+	}
 }
+
+stage('choice 1'){
+	when{
+	expression { choice == '1' }
+	}
+	steps{
+	echo 'This is choice 1'
+	}
 }
-parallel integrationTest: {
-        stage('integration test'){
-		steps{
-		echo 'This is integration test'
-		}
-		}
-    }, AptTest: {
-        stage('Apt test'){
-		steps{
-		echo 'This is Apt test'
-		}
-		}
-    }, UnitTest: {
-        stage('Unit test'){
-		steps{
-		echo 'This is Unit test'
-		}
-		}
-    },
-    failFast: true
-parallel CreatePackage: {
-        stage('Maven goal package'){
-		steps{
-		sh 'mvn package'
-		}
-		}
-    }, mavensavem2repo: {
-        stage('maven goal install'){
-		steps{
-		sh 'mvn install'
-		}
-		}
-    },
-    failFast: true
-parallel Deploytodev1: {
-        stage('Deploy to dev vm1'){
-		steps{
-		echo 'This is deploy to dev vm1.'
-		}
-		}
-    }, Deploytodev2: {
-        stage('Deploy to dev vm2'){
-		steps{
-		echo 'This is deploy to dev vm2.'
-		}
-		}
-    },
-    failFast: true
+
+stage('choice 2'){
+	when{
+	expression { choice == '2' }
+	}
+	steps{
+	echo 'This is choice 2'
+	}
+}
+
+stage('choice 3'){
+	when{
+	expression { choice == '3' }
+	}
+	steps{
+	echo 'This is choice 3'
+	}
+}
+
 }
 }
