@@ -8,4 +8,10 @@ sh label: '', script: 'mvn clean package'
 stage('build image'){
 sh 'docker build -t rajrajendraray89/app:1.0.0 .'
 }
+stage('push docker image to hub'){
+withCredentials([usernameColonPassword(credentialsId: 'rajrajendraray89', variable: 'dockerhubaccount')]) {
+sh "docker login -u rajrajendraray89 -p ${dockerhubaccount}"
+}
+sh 'docker push rajrajendraray89/app:1.0.0'
+}
 }
